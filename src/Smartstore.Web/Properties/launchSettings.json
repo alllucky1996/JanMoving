@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/Smartstore",
+      "applicationUrl": "http://moving.mil",
       "sslPort": 0
     },
     "iisExpress": {
@@ -22,6 +22,12 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IISLocal": {
+      "commandName": "IIS",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

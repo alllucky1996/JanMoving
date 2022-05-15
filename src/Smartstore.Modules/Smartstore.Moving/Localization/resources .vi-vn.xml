@@ -1,0 +1,14 @@
+﻿<Language Name="English" IsDefault="false" IsRightToLeft="false">
+    <LocaleResource Name="Plugins.FriendlyName.Smartstore.Video" AppendRootKey="false">
+        <Value>Video</Value>
+    </LocaleResource>
+    <LocaleResource Name="Plugins.Description.Smartstore.Video" AppendRootKey="false">
+        <Value>Thêm một video vào trang web.</Value>
+    </LocaleResource>
+    <LocaleResource Name="Settings">
+        <Value>Cài đăng video</Value>
+    </LocaleResource>
+    <LocaleResource Name="BlockMetadata.FriendlyName.Video" AppendRootKey="false">
+        <Value>Video</Value>
+    </LocaleResource>
+</Language>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+		<Product>Smartstore News</Product>
+		<OutputPath>..\..\Smartstore.Web\Modules\Smartstore.Moving</OutputPath>
+		<OutDir>$(OutputPath)</OutDir>
+  </PropertyGroup>
+	<ItemGroup>
+		<Content Include="App_Data\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Localization\resources .vi-vn.xml" />
+	</ItemGroup>
+</Project>

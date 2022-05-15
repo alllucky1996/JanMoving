@@ -1,0 +1,23 @@
+﻿<Language Name="English" IsDefault="false" IsRightToLeft="false">
+    <LocaleResource Name="Plugins.FriendlyName.Smartstore.Video" AppendRootKey="false">
+        <Value>Video</Value>
+    </LocaleResource>
+    <LocaleResource Name="Plugins.Description.Smartstore.Video" AppendRootKey="false">
+        <Value>Adds a video section to the website.</Value>
+    </LocaleResource>
+    <LocaleResource Name="Settings">
+        <Value>Video settings</Value>
+    </LocaleResource>
+    <LocaleResource Name="BlockMetadata.FriendlyName.Video" AppendRootKey="false">
+        <Value>Video</Value>
+    </LocaleResource>
+    <LocaleResource Name="Admin.Moving.Video" AppendRootKey="false">
+        <Value>Video</Value>
+    </LocaleResource>
+    <LocaleResource Name="Admin.Moving.Video.VideoTags" AppendRootKey="false">
+        <Value>VideoTags</Value>
+    </LocaleResource>
+    <LocaleResource Name="Admin.Moving.Video.Video" AppendRootKey="false">
+        <Value>Videos</Value>
+    </LocaleResource>
+</Language>

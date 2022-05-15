@@ -1,0 +1,12 @@
+﻿{
+  "$schema": "../module.schema.json",
+  "Group": "CMS",
+  "SystemName": "Smartstore.Video",
+  "FriendlyName": "Videos",
+  "Description": "",
+  "Version": "5.0",
+  "MinAppVersion": "5.0",
+  "Author": "Nguyễn Anh Dũng",
+  "Order": 1,
+  "ResourceRootKey": "Plugins.CMS.Video"
+}
