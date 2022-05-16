@@ -17,7 +17,7 @@
     <LocaleResource Name="Admin.Moving.Video.VideoTags" AppendRootKey="false">
         <Value>VideoTags</Value>
     </LocaleResource>
-    <LocaleResource Name="Admin.Moving.Video.Video" AppendRootKey="false">
+    <LocaleResource Name="Admin.Moving.Video.Videos" AppendRootKey="false">
         <Value>Videos</Value>
     </LocaleResource>
 </Language>

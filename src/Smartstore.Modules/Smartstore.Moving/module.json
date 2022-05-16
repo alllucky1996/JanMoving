@@ -4,8 +4,8 @@
   "SystemName": "Smartstore.Video",
   "FriendlyName": "Videos",
   "Description": "",
-  "Version": "5.0",
-  "MinAppVersion": "5.0",
+  "Version": "5.0.0",
+  "MinAppVersion": "5.0.0",
   "Author": "Nguyễn Anh Dũng",
   "Order": 1,
   "ResourceRootKey": "Plugins.CMS.Video"

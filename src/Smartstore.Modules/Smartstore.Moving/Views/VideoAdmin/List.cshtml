@@ -1,0 +1,24 @@
+﻿@model NewsListModel
+
+@{
+    ViewBag.Title = T("Admin.Moving.Video.Videos").Value;
+
+    Assets.BodyAttributes.AppendCssClass("spa-layout");
+
+    var gridViewData = new ViewDataDictionary(ViewData);
+    gridViewData["Parent"] = Model;
+}
+
+<div class="section-header">
+    <div class="title">
+        <i class="far fa-newspaper"></i>
+        @T("Admin.Moving.Video.Videos")
+    </div>
+    <div class="options">
+        <zone name="admin_button_toolbar_before" />
+
+        <zone name="admin_button_toolbar_after" />
+    </div>
+</div>
+
+<partial name="_Grid.VideoItems" model="null" view-data="gridViewData" />

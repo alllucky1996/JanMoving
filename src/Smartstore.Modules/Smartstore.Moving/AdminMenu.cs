@@ -16,7 +16,7 @@ namespace Smartstore.Moving
                 .AsItem();
 
             var blogPostsMenuItem = new MenuItem().ToBuilder()
-                .ResKey("Admin.Moving.Video.Video")
+                .ResKey("Admin.Moving.Video.Videos")
                 .Action("List", "Video", new { area = "Admin" })
                 .AsItem();
 

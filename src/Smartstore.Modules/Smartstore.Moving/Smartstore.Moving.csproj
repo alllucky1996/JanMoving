@@ -11,5 +11,16 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="Localization\resources .vi-vn.xml" />
+	  <None Remove="Views\VideoAdmin\Comments.cshtml" />
+	  <None Remove="Views\VideoAdmin\Create.cshtml" />
+	  <None Remove="Views\VideoAdmin\Edit.cshtml" />
+	  <None Remove="Views\VideoAdmin\List.cshtml" />
+	  <None Remove="Views\VideoAdmin\Settings.cshtml" />
+	  <None Remove="Views\VideoAdmin\_CreateOrUpdate.cshtml" />
+	  <None Remove="Views\VideoAdmin\_Grid.NewsComments.cshtml" />
+	  <None Remove="Views\VideoAdmin\_Grid.NewsItems.Search.cshtml" />
+	  <None Remove="Views\VideoAdmin\_Grid.VideoItems.cshtml" />
+	  <None Remove="Views\VideoAdmin\_ViewImports.cshtml" />
+	  <None Remove="Views\VideoAdmin\_ViewStart.cshtml" />
 	</ItemGroup>
 </Project>

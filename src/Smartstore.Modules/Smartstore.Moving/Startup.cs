@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Smartstore.Core.Bootstrapping;
 using Smartstore.Core.Content.Menus;
 using Smartstore.Core.Data;
 using Smartstore.Core.OutputCache;
@@ -20,8 +21,9 @@ namespace Smartstore.Moving
     {
         public override void ConfigureServices(IServiceCollection services, IApplicationContext appContext)
         {
-            services.AddTransient<IDbContextConfigurationSource<SmartDbContext>, SmartDbContextConfigurer>();
+          
 
+            services.AddTransient<IDbContextConfigurationSource<SmartDbContext>, SmartDbContextConfigurer>();
             services.AddScoped<IXmlSitemapPublisher, NewsItemXmlSitemapPublisher>();
             services.AddScoped<ILinkProvider, NewsLinkProvider>();
 

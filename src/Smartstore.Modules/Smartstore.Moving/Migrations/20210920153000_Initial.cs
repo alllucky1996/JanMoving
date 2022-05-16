@@ -1,17 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
+﻿using System.Data;
 using FluentMigrator;
 using Smartstore.Core.Content.Media;
 using Smartstore.Core.Data.Migrations;
 using Smartstore.Core.Identity;
 using Smartstore.Core.Localization;
 using Smartstore.Domain;
-using Smartstore.Moving.Extensions;
 //FluentMigrator.Generator
 
 namespace Smartstore.Moving.Migrations
 {
-    [MigrationVersion("2021-09-20 15:30:00", "News: Initial")]
+    [MigrationVersion("2022-05-16 15:30:00", "Videos: Initial")]
     internal class Initial : Migration
     {
         public override void Up()
