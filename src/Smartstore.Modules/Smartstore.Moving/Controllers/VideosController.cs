@@ -24,7 +24,7 @@ using Smartstore.Web.Filters;
 
 namespace Smartstore.Moving.Controllers
 {
-    public class NewsController : PublicController
+    public class VideosController : PublicController
     {
         private readonly SmartDbContext _db;
         private readonly ICommonServices _services;
@@ -39,7 +39,7 @@ namespace Smartstore.Moving.Controllers
         private readonly CaptchaSettings _captchaSettings;
         private readonly SeoSettings _seoSettings;
 
-        public NewsController(
+        public VideosController(
             SmartDbContext db,
             ICommonServices services,
             IStoreMappingService storeMappingService,

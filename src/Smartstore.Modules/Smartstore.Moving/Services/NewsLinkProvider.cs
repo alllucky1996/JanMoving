@@ -61,7 +61,7 @@ namespace Smartstore.Moving.Services
         {
             if (int.TryParse(expression.Target, out var entityId))
             {
-                var summary = await _db.NewsItems()
+                var summary = await _db.VideoItem()
                     .AsNoTracking()
                     .Where(x => x.Id == entityId)
                     .Select(selector)

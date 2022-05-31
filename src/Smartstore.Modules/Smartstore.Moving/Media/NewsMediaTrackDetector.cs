@@ -26,7 +26,7 @@ namespace Smartstore.Moving.Media
         public async IAsyncEnumerable<MediaTrack> DetectAllTracksAsync(string albumName, [EnumeratorCancellation] CancellationToken cancelToken = default)
         {
             var name = nameof(VideoItem);
-            var p = new FastPager<VideoItem>(_db.NewsItems().AsNoTracking().Where(x => x.MediaFileId.HasValue || x.PreviewMediaFileId.HasValue));
+            var p = new FastPager<VideoItem>(_db.VideoItem().AsNoTracking().Where(x => x.MediaFileId.HasValue || x.PreviewMediaFileId.HasValue));
             while ((await p.ReadNextPageAsync(x => new { x.Id, x.MediaFileId, x.PreviewMediaFileId }, x => x.Id, cancelToken)).Out(out var list))
             {
                 foreach (var x in list)

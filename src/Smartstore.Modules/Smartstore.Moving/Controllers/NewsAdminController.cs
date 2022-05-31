@@ -130,7 +130,7 @@ namespace Smartstore.Moving.Controllers
         // AJAX.
         public async Task<IActionResult> AllNews(string selectedIds)
         {
-            var query = _db.NewsItems().AsNoTracking();
+            var query = _db.VideoItem().AsNoTracking();
             var pager = new FastPager<VideoItem>(query, 500);
             var allNewsItems = new List<dynamic>();
             var ids = selectedIds.ToIntArray().ToList();
@@ -192,7 +192,7 @@ namespace Smartstore.Moving.Controllers
         [Permission(MovingPermissions.Read)]
         public async Task<IActionResult> NewsItemList(GridCommand command, NewsListModel model)
         {
-            var query = _db.NewsItems().Include(x => x.Language).AsNoTracking();
+            var query = _db.VideoItem().Include(x => x.Language).AsNoTracking();
 
             query = query
                 .ApplyStandardFilter(model.SearchStoreId, model.SearchLanguageId, true)
@@ -237,7 +237,7 @@ namespace Smartstore.Moving.Controllers
         public async Task<IActionResult> NewsItemUpdate(NewsItemModel model)
         {
             var success = false;
-            var newsItem = await _db.NewsItems().FindByIdAsync(model.Id);
+            var newsItem = await _db.VideoItem().FindByIdAsync(model.Id);
 
             if (newsItem != null)
             {
@@ -274,7 +274,7 @@ namespace Smartstore.Moving.Controllers
             {
                 var newsItem = await MapperFactory.MapAsync<NewsItemModel, VideoItem>(model);
 
-                _db.NewsItems().Add(newsItem);
+                _db.VideoItem().Add(newsItem);
                 await _db.SaveChangesAsync();
 
                 var validateSlugResult = await newsItem.ValidateSlugAsync(model.SeName, newsItem.Title, true);
@@ -286,7 +286,7 @@ namespace Smartstore.Moving.Controllers
                 await _db.SaveChangesAsync();
 
                 await Services.EventPublisher.PublishAsync(new ModelBoundEvent(model, newsItem, form));
-                NotifySuccess(T("Admin.ContentManagement.News.NewsItems.Added"));
+                NotifySuccess(T("Admin.ContentManagement.News.VideoItem.Added"));
 
                 return continueEditing 
                     ? RedirectToAction(nameof(Edit), new { id = newsItem.Id }) 
@@ -301,7 +301,7 @@ namespace Smartstore.Moving.Controllers
         [Permission(MovingPermissions.Read)]
         public async Task<IActionResult> Edit(int id)
         {
-            var newsItem = await _db.NewsItems().FindByIdAsync(id, false);
+            var newsItem = await _db.VideoItem().FindByIdAsync(id, false);
             if (newsItem == null)
             {
                 return NotFound();
@@ -330,7 +330,7 @@ namespace Smartstore.Moving.Controllers
         [Permission(MovingPermissions.Update)]
         public async Task<IActionResult> Edit(NewsItemModel model, bool continueEditing, IFormCollection form)
         {
-            var newsItem = await _db.NewsItems().FindByIdAsync(model.Id);
+            var newsItem = await _db.VideoItem().FindByIdAsync(model.Id);
             if (newsItem == null)
             {
                 return NotFound();
@@ -349,7 +349,7 @@ namespace Smartstore.Moving.Controllers
                 await _db.SaveChangesAsync();
 
                 await Services.EventPublisher.PublishAsync(new ModelBoundEvent(model, newsItem, form));
-                NotifySuccess(T("Admin.ContentManagement.News.NewsItems.Updated"));
+                NotifySuccess(T("Admin.ContentManagement.News.VideoItem.Updated"));
 
                 return continueEditing 
                     ? RedirectToAction(nameof(Edit), new { id = newsItem.Id }) 
@@ -365,16 +365,16 @@ namespace Smartstore.Moving.Controllers
         [Permission(MovingPermissions.Delete)]
         public async Task<IActionResult> Delete(int id)
         {
-            var newsItem = await _db.NewsItems().FindByIdAsync(id, false);
+            var newsItem = await _db.VideoItem().FindByIdAsync(id, false);
             if (newsItem == null)
             {
                 return NotFound();
             }
 
-            _db.NewsItems().Remove(newsItem);
+            _db.VideoItem().Remove(newsItem);
             await _db.SaveChangesAsync();
 
-            NotifySuccess(T("Admin.ContentManagement.News.NewsItems.Deleted"));
+            NotifySuccess(T("Admin.ContentManagement.News.VideoItem.Deleted"));
             return RedirectToAction(nameof(List));
         }
 
@@ -388,9 +388,9 @@ namespace Smartstore.Moving.Controllers
 
             if (ids.Any())
             {
-                var newsItems = await _db.NewsItems().GetManyAsync(ids, true);
+                var newsItems = await _db.VideoItem().GetManyAsync(ids, true);
 
-                _db.NewsItems().RemoveRange(newsItems);
+                _db.VideoItem().RemoveRange(newsItems);
 
                 numDeleted = await _db.SaveChangesAsync();
                 success = true;

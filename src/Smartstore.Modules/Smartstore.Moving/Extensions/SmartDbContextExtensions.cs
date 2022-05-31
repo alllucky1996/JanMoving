@@ -4,7 +4,7 @@ namespace Smartstore.Moving
 {
     public static class SmartDbContextExtensions
     {
-        public static DbSet<VideoItem> NewsItems(this SmartDbContext db)
+        public static DbSet<VideoItem> VideoItem(this SmartDbContext db)
             => db.Set<VideoItem>();
 
         public static DbSet<VideoComment> NewsComments(this SmartDbContext db)

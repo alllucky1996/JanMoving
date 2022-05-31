@@ -1,7 +1,7 @@
-﻿@model NewsItemModel
+﻿@model VideoItemModel
 
 @{
-    ViewBag.Title = T("Admin.ContentManagement.News.NewsItems.EditNewsItemDetails").Value + " - " + Model.Title;
+    ViewBag.Title = T("Admin.News.VideoItems.EditVideoItem").Value + " - " + Model.Title;
 }
 
 <form asp-action="Edit">
@@ -34,5 +34,5 @@
             <zone name="admin_button_toolbar_after" />
         </div>
     </div>
-    <partial name="_CreateOrUpdate" />
+    <partial name="_CreateOrUpdate" model="Model"/>
 </form>

@@ -21,7 +21,7 @@ namespace Smartstore.Moving.Services
                 return null;
             }
 
-            var query = _db.NewsItems()
+            var query = _db.VideoItem()
                 .AsNoTracking()
                 .ApplyStandardFilter(context.RequestStoreId);
 

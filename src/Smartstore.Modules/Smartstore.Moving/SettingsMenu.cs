@@ -9,7 +9,7 @@ namespace Smartstore.Moving
         void IMenuProvider.BuildMenu(TreeNode<MenuItem> rootNode)
         {
             var newsMenuItem = new MenuItem().ToBuilder()
-                .ResKey("Admin.Configuration.Settings.News")
+                .ResKey("Admin.Moving.Video.VideoSetting")
                 .Id("news")
                 .Icon("newspaper", "bi")
                 .PermissionNames(MovingPermissions.Read)

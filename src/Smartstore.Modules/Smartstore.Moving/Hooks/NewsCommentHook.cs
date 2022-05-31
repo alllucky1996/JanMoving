@@ -33,7 +33,7 @@ namespace Smartstore.Moving.Hooks
 
             foreach (var itemId in itemIds)
             {
-                var newsItem = await _db.NewsItems().FindByIdAsync(itemId);
+                var newsItem = await _db.VideoItem().FindByIdAsync(itemId);
                 if (newsItem != null)
                 {
                     var query = _db.NewsComments();

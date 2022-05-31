@@ -64,7 +64,7 @@ namespace Smartstore.Moving
             if (message.Source is VideoComment part)
             {
                 var messageContext = message.MessageContext;
-                var newsItem = await _db.NewsItems().FindByIdAsync(part.VideoItemId);
+                var newsItem = await _db.VideoItem().FindByIdAsync(part.VideoItemId);
                 var url = urlHelper.RouteUrl("NewsItem", new { SeName = await newsItem.GetActiveSlugAsync(messageContext.Language.Id) });
                 var title = newsItem.GetLocalized(x => x.Title, messageContext.Language).Value.NullEmpty();
 

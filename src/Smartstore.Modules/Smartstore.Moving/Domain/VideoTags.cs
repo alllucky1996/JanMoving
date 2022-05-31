@@ -11,7 +11,7 @@ namespace Smartstore.Moving.Domain
     {
         public void Configure(EntityTypeBuilder<VideoTag> builder)
         {
-             
+
         }
     }
 

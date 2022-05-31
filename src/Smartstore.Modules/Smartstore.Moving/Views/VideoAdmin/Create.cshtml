@@ -1,4 +1,4 @@
-﻿@model NewsItemModel
+﻿@model VideoItemModel
 
 @{
     ViewBag.Title = T("Admin.ContentManagement.News.NewsItems.AddNew").Value;
@@ -21,5 +21,5 @@
         </div>
     </div>
 
-    <partial name="_CreateOrUpdate" />
+    <partial name="_CreateOrUpdate" model="Model"/>
 </form>

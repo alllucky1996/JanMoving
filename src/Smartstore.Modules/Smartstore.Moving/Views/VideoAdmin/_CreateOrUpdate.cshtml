@@ -1,4 +1,4 @@
-﻿@model NewsItemModel
+﻿@model VideoItemModel
 
 <div asp-validation-summary="All"></div>
 <input type="hidden" asp-for="Id" />
@@ -6,7 +6,7 @@
 <tabstrip id="news-edit" sm-nav-style="Material">
     <tab sm-title="@T("Admin.Common.Info")" sm-selected="true">
 
-        @(Html.LocalizedEditor<NewsItemModel, NewsItemLocalizedModel>("newsitem-info-localized",
+        @(Html.LocalizedEditor<VideoItemModel, VideoItemLocalizedModel>("newsitem-info-localized",
             @<div class="adminContent">
                 <div class="adminRow">
                     <div class="adminTitle">
@@ -166,7 +166,7 @@
         </div>
     </tab>
     <tab sm-title="@T("Admin.Common.SEO")">
-        @(Html.LocalizedEditor<NewsItemModel, NewsItemLocalizedModel>("newsitem-seo-localized",
+        @(Html.LocalizedEditor<VideoItemModel, VideoItemLocalizedModel>("newsitem-seo-localized",
             @<div class="adminContent">
                 <div class="adminRow">
                     <div class="adminTitle">

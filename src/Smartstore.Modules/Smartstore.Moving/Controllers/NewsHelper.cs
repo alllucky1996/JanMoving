@@ -52,7 +52,7 @@ namespace Smartstore.Moving.Controllers
                 DisableCommentCount = disableCommentCount
             };
 
-            var query = _db.NewsItems().AsNoTracking();
+            var query = _db.VideoItem().AsNoTracking();
 
             if (maxAgeInDays.HasValue)
             {

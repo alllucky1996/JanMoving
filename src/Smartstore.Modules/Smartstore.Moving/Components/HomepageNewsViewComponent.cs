@@ -32,7 +32,7 @@ namespace Smartstore.Moving.Components
             var cacheKey = string.Format(ModelCacheInvalidator.HOMEPAGE_NEWSMODEL_KEY, languageId, storeId, _newsSettings.MainPageNewsCount, includeHidden);
             var cachedModel = await Services.CacheFactory.GetMemoryCache().GetAsync(cacheKey, async () =>
             {
-                var newsItems = await Services.DbContext.NewsItems()
+                var newsItems = await Services.DbContext.VideoItem()
                     .AsNoTracking()
                     .ApplyStandardFilter(storeId, languageId)
                     .ToPagedList(0, _newsSettings.MainPageNewsCount)

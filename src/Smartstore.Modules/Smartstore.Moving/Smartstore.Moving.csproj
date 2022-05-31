@@ -18,8 +18,8 @@
 	  <None Remove="Views\VideoAdmin\Settings.cshtml" />
 	  <None Remove="Views\VideoAdmin\_CreateOrUpdate.cshtml" />
 	  <None Remove="Views\VideoAdmin\_Grid.NewsComments.cshtml" />
-	  <None Remove="Views\VideoAdmin\_Grid.NewsItems.Search.cshtml" />
 	  <None Remove="Views\VideoAdmin\_Grid.VideoItems.cshtml" />
+	  <None Remove="Views\VideoAdmin\_Grid.VideoItems.Search.cshtml" />
 	  <None Remove="Views\VideoAdmin\_ViewImports.cshtml" />
 	  <None Remove="Views\VideoAdmin\_ViewStart.cshtml" />
 	</ItemGroup>
