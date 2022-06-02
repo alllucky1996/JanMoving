@@ -11,4 +11,10 @@
     <LocaleResource Name="BlockMetadata.FriendlyName.Video" AppendRootKey="false">
         <Value>Video</Value>
     </LocaleResource>
+    <LocaleResource Name="Admin.VideoItems.EditVideoItem">
+        <Value>Sửa thông tin video</Value>
+    </LocaleResource>
+    <LocaleResource Name="Admin.VideoItems.CreateVideoItem">
+        <Value>Thêm mới video</Value>
+    </LocaleResource>
 </Language>

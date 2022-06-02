@@ -11,7 +11,7 @@ namespace Smartstore.Moving.Domain
     {
         public void Configure(EntityTypeBuilder<VideoTag> builder)
         {
-
+            builder.Property(p=>p.IsUseInternal).HasDefaultValue(false);
         }
     }
 
@@ -38,6 +38,7 @@ namespace Smartstore.Moving.Domain
         public string Tag { get; set; }
 
         public bool IsPublicCode { get; set; }
+        public bool IsUseInternal { get; set; }
 
         private ICollection<VideoItem> _videoItems;
         /// <summary>

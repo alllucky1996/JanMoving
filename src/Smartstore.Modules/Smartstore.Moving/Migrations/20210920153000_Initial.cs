@@ -79,6 +79,7 @@ namespace Smartstore.Moving.Migrations
                     .WithIdColumn()
                     .WithColumn(nameof(VideoTag.Tag)).AsString(200).Nullable()
                     .WithColumn(nameof(VideoTag.IsPublicCode)).AsBoolean().NotNullable()
+                    .WithColumn(nameof(VideoTag.IsUseInternal)).AsBoolean().NotNullable()
                             .Indexed("IX_IsPublicCode");
             }
             #endregion
