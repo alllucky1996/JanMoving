@@ -9,5 +9,8 @@ namespace Smartstore.Moving
 
         public static DbSet<VideoComment> NewsComments(this SmartDbContext db)
             => db.Set<VideoComment>();
+
+        public static DbSet<VideoTag> VideoTags(this SmartDbContext db)
+            => db.Set<VideoTag>();
     }
 }

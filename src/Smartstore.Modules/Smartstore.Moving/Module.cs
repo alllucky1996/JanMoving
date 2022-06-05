@@ -40,13 +40,17 @@ namespace Smartstore.Moving
         {
             await TrySaveSettingsAsync<MovingSettings>();
             await ImportLanguageResourcesAsync();
-            await TrySeedData(context);
+        
 
             await base.InstallAsync(context);
+
+            await TrySeedData(context);
         }
 
         private async Task TrySeedData(ModuleInstallationContext context)
         {
+            
+
             try
             {
                 var seeder = new NewsInstallationDataSeeder(context, Services.Resolve<IMessageTemplateService>(), Services.Resolve<IWidgetService>());

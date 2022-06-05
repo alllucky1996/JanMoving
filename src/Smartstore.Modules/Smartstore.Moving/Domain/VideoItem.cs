@@ -30,28 +30,30 @@ namespace Smartstore.Moving.Domain
                 .HasForeignKey(c => c.PreviewMediaFileId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder
-               .HasMany(c => c.VideoTags)
-               .WithMany(c => c.VideoItems)
-               .UsingEntity<Dictionary<string, object>>(
-                   "VideoItem_VideoTag_Mapping",
-                   c => c
-                       .HasOne<VideoTag>()
-                       .WithMany()
-                       .HasForeignKey("VideoTag_Id")
-                       .HasConstraintName("FK_dbo.VideoItem_VideoTag_Mapping_dbo.VideoTag_VideoTag_Id")
-                       .OnDelete(DeleteBehavior.Cascade),
-                   c => c
-                       .HasOne<VideoItem>()
-                       .WithMany()
-                       .HasForeignKey("VideoItem_Id")
-                       .HasConstraintName("FK_dbo.VideoItem_VideoTag_Mapping_dbo.VideoItem_VideoItem_Id")
-                       .OnDelete(DeleteBehavior.Cascade),
-                   c =>
-                   {
-                       c.HasIndex("VideoItem_Id");
-                       c.HasKey("VideoItem_Id", "VideoTag_Id");
-                   });
+            builder.Property(p => p.AllowComments).HasDefaultValue(false);
+
+            //builder
+            //   .HasMany(c => c.VideoTags)
+            //   .WithMany(c => c.VideoItems)
+            //   .UsingEntity<Dictionary<string, object>>(
+            //       "VideoItem_VideoTag_Mapping",
+            //       c => c
+            //           .HasOne<VideoTag>()
+            //           .WithMany()
+            //           .HasForeignKey("VideoTag_Id")
+            //           .HasConstraintName("FK_dbo.VideoItem_VideoTag_Mapping_dbo.VideoTag_VideoTag_Id")
+            //           .OnDelete(DeleteBehavior.Cascade),
+            //       c => c
+            //           .HasOne<VideoItem>()
+            //           .WithMany()
+            //           .HasForeignKey("VideoItem_Id")
+            //           .HasConstraintName("FK_dbo.VideoItem_VideoTag_Mapping_dbo.VideoItem_VideoItem_Id")
+            //           .OnDelete(DeleteBehavior.Cascade),
+            //       c =>
+            //       {
+            //           c.HasIndex("VideoItem_Id");
+            //           c.HasKey("VideoItem_Id", "VideoTag_Id");
+            //       });
         }
     }
 
@@ -60,7 +62,7 @@ namespace Smartstore.Moving.Domain
     /// </summary>
     [Table(nameof(VideoItem))]
     [Index(nameof(Title), Name = "IX_Title")]
-    public partial class VideoItem : BaseEntity, ISlugSupported, IStoreRestricted, ILocalizedEntity
+    public partial class VideoItem : BaseEntity, ISlugSupported, IStoreRestricted, ILocalizedEntity, IAuditable
     {
         #region static
 
@@ -79,15 +81,10 @@ namespace Smartstore.Moving.Domain
 
         #endregion
 
-        public VideoItem()
-        {
-        }
-
-        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private member.", Justification = "Required for EF lazy loading")]
-        private VideoItem(ILazyLoader lazyLoader)
-            : base(lazyLoader)
-        {
-        }
+        [Required, StringLength(255)]
+        public string Url { get; set; }
+        [Required, StringLength(255)]
+        public string Data { get; set; }
 
         /// <summary>
         /// Gets or sets the news title.
@@ -216,15 +213,7 @@ namespace Smartstore.Moving.Domain
             set => _language = value;
         }
 
-        private ICollection<VideoComment> _videoComments;
-        /// <summary>
-        /// Gets or sets the news comments.
-        /// </summary>
-        public ICollection<VideoComment> VideoComments
-        {
-            get => _videoComments ?? LazyLoader.Load(this, ref _videoComments) ?? (_videoComments ??= new HashSet<VideoComment>());
-            set => _videoComments = value;
-        }
+       
 
         /// <inheritdoc/>
         public string GetDisplayName()
@@ -238,17 +227,36 @@ namespace Smartstore.Moving.Domain
             return nameof(Title);
         }
 
+        public virtual ICollection<VideoItem_VideoTag_Mapping> VideoItem_VideoTag_Mappings { get; set; } = new List<VideoItem_VideoTag_Mapping>();
+        public virtual ICollection<VideoComment> VideoComments { get; set; } = new List<VideoComment>();
 
+        //private ICollection<VideoComment> _videoComments;
+        ///// <summary>
+        ///// Gets or sets the news comments.
+        ///// </summary>
+        //public ICollection<VideoComment> VideoComments
+        //{
+        //    get => _videoComments ?? LazyLoader.Load(this, ref _videoComments) ?? (_videoComments ??= new HashSet<VideoComment>());
+        //    set => _videoComments = value;
+        //}
 
-        private ICollection<VideoTag> _videoTags;
-        /// <summary>
-        /// Gets or sets the product tags.
-        /// </summary>
-        public ICollection<VideoTag> VideoTags
-        {
-            get => LazyLoader?.Load(this, ref _videoTags) ?? (_videoTags ??= new HashSet<VideoTag>());
-            protected set => _videoTags = value;
-        }
-
+        //private ICollection<VideoItem_VideoTag_Mapping> _videoTags;
+        ///// <summary>
+        ///// Gets or sets the product tags.
+        ///// </summary>
+        //public ICollection<VideoItem_VideoTag_Mapping> VideoItem_VideoTag_Mappings
+        //{
+        //    get => LazyLoader?.Load(this, ref _videoTags) ?? (_videoTags ??= new HashSet<VideoItem_VideoTag_Mapping>());
+        //    protected set => _videoTags = value;
+        //}
+        public DateTime UpdatedOnUtc { get; set; }
     }
+
+
+public enum HttpType
+{
+    Get,
+    Post,
+    Delete
+}
 }

@@ -179,7 +179,7 @@ namespace Smartstore.Moving.Controllers
 
             var newsItems = await query
                 .ApplyGridCommand(command)
-                .ToPagedList(command)
+                  .ToPagedList(command)
                 .LoadAsync();
 
             var mapper = MapperFactory.GetMapper<VideoItem, VideoItemModel>();
@@ -196,7 +196,7 @@ namespace Smartstore.Moving.Controllers
             var gridModel = new GridModel<VideoItemModel>
             {
                 Rows = newsItemModels,
-                Total = await newsItems.GetTotalCountAsync()
+                Total =  newsItems.Count()// .GetTotalCountAsync()
             };
 
             return Json(gridModel);

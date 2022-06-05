@@ -6,6 +6,7 @@ using Smartstore.Core.Widgets;
 using Smartstore.Engine.Modularity;
 using Smartstore.IO;
 using Smartstore.Moving.Services;
+using Smartstore.Scheduling;
 using Smartstore.Utilities;
 
 namespace Smartstore.Moving.Migrations
@@ -57,14 +58,14 @@ namespace Smartstore.Moving.Migrations
 
         private async Task PopulateNewsPosts()
         {
-            if (await Context.Set<VideoItem>().AnyAsync())
-            {
-                return;
-            }
-
             var converter = new NewsItemConverter(Context, _installContext);
-            var newsItems = await converter.ImportAllAsync();
-            await PopulateUrlRecordsFor(newsItems, item => CreateUrlRecordFor(item));
+            if (!await Context.Set<VideoItem>().AnyAsync())
+            {
+               
+                var newsItems = await converter.ImportAllAsync();
+                await PopulateUrlRecordsFor(newsItems, item => CreateUrlRecordFor(item));
+            }
+            await converter.InitTask();
         }
 
         public UrlRecord CreateUrlRecordFor(VideoItem item)

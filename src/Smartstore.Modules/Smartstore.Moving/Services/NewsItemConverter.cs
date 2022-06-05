@@ -5,6 +5,8 @@ using Smartstore.Core.Data;
 using Smartstore.Core.Seo;
 using Smartstore.Engine.Modularity;
 using Smartstore.IO;
+using Smartstore.Moving.Tasks;
+using Smartstore.Scheduling;
 
 namespace Smartstore.Moving.Services
 {
@@ -84,7 +86,7 @@ namespace Smartstore.Moving.Services
         {
             var root = _installContext.ApplicationContext.ContentRoot;
             var dir = root.GetDirectory(PathUtility.Combine(_installContext.ModuleDescriptor.Path, "App_Data/Samples"));
-            
+
             // de-DE, de, en
             var testPaths = new List<string>(3) { _installContext.Culture, "en" };
             if (_installContext.Culture.IndexOf('-') > -1)
@@ -150,6 +152,27 @@ namespace Smartstore.Moving.Services
 
             return result;
         }
+
+
+        public async Task InitTask()
+        {
+            var tasks = _db.Set<TaskDescriptor>();
+            if (tasks.Any(a => a.Type == nameof(JavHDTask)))
+            {
+                return;
+            }
+            tasks.Add(new TaskDescriptor
+            {
+                Name = "crawl data javhd",
+                CronExpression = "* * * * *", // every Minute
+                Type = nameof(JavHDTask),
+                Enabled = false,
+                StopOnError = false,
+                Priority = TaskPriority.Normal
+            });
+            await _db.SaveChangesAsync();
+        }
+
 
         private static string BuildSlug(string name)
             => SeoHelper.BuildSlug(name, true, false);

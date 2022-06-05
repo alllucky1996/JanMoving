@@ -26,8 +26,10 @@ namespace Smartstore.Moving.Migrations
                         .WithIdColumn()
                         .WithColumn(nameof(VideoItem.Title)).AsString(450).NotNullable()
                             .Indexed("IX_Title")
-                        .WithColumn(nameof(VideoItem.Short)).AsString(4000).NotNullable()
-                        .WithColumn(nameof(VideoItem.Full)).AsMaxString().NotNullable()
+                        .WithColumn(nameof(VideoItem.Url)).AsString().Nullable()
+                        .WithColumn(nameof(VideoItem.Data)).AsString().Nullable()
+                        .WithColumn(nameof(VideoItem.Short)).AsString(4000).Nullable()
+                        .WithColumn(nameof(VideoItem.Full)).AsMaxString().Nullable()
                         .WithColumn(nameof(VideoItem.Published)).AsBoolean().NotNullable()
                         .WithColumn(nameof(VideoItem.StartDateUtc)).AsDateTime2().Nullable()
                         .WithColumn(nameof(VideoItem.EndDateUtc)).AsDateTime2().Nullable()
@@ -36,6 +38,7 @@ namespace Smartstore.Moving.Migrations
                         .WithColumn(nameof(VideoItem.NotApprovedCommentCount)).AsInt32().NotNullable()
                         .WithColumn(nameof(VideoItem.LimitedToStores)).AsBoolean().NotNullable()
                         .WithColumn(nameof(VideoItem.CreatedOnUtc)).AsDateTime2().NotNullable()
+                        .WithColumn(nameof(VideoItem.UpdatedOnUtc)).AsDateTime2().NotNullable()
                         .WithColumn(nameof(VideoItem.MetaKeywords)).AsString(400).Nullable()
                         .WithColumn(nameof(VideoItem.MetaDescription)).AsString(4000).Nullable()
                         .WithColumn(nameof(VideoItem.MetaTitle)).AsString(400).Nullable()
@@ -80,10 +83,25 @@ namespace Smartstore.Moving.Migrations
                     .WithColumn(nameof(VideoTag.Tag)).AsString(200).Nullable()
                     .WithColumn(nameof(VideoTag.IsPublicCode)).AsBoolean().NotNullable()
                     .WithColumn(nameof(VideoTag.IsUseInternal)).AsBoolean().NotNullable()
+                    .WithColumn(nameof(VideoTag.IsCategory)).AsBoolean().NotNullable()
                             .Indexed("IX_IsPublicCode");
             }
             #endregion
-            #region VideoTags
+            #region VideoItem_VideoTag_mapping
+
+            if (!Schema.Table(nameof(VideoItem_VideoTag_Mapping)).Exists())
+            {
+
+                Create.Table(nameof(VideoItem_VideoTag_Mapping))
+                    .WithIdColumn()
+                    .WithColumn(nameof(VideoItem_VideoTag_Mapping.VideoItemId)).AsInt32().NotNullable()
+                            .Indexed().ForeignKey(nameof(VideoItem), id).OnDelete(Rule.Cascade)
+                    .WithColumn(nameof(VideoItem_VideoTag_Mapping.VideoTagId)).AsInt32().NotNullable()
+                            .Indexed().ForeignKey(nameof(VideoTag), id).OnDelete(Rule.Cascade); 
+                    
+            }
+            #endregion
+            #region VideoMedia
 
             if (!Schema.Table(nameof(VideoMedia)).Exists())
             {
@@ -118,6 +136,7 @@ namespace Smartstore.Moving.Migrations
         public override void Down()
         {
             // INFO: no down initial migration. Leave news schema as it is or ask merchant to delete it.
+           
         }
     }
 }

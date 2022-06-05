@@ -1,26 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-  <PropertyGroup>
-		<Product>Smartstore News</Product>
-		<OutputPath>..\..\Smartstore.Web\Modules\Smartstore.Moving</OutputPath>
-		<OutDir>$(OutputPath)</OutDir>
-  </PropertyGroup>
-	<ItemGroup>
-		<Content Include="App_Data\**">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Localization\resources .vi-vn.xml" />
-	  <None Remove="Views\VideoAdmin\Comments.cshtml" />
-	  <None Remove="Views\VideoAdmin\Create.cshtml" />
-	  <None Remove="Views\VideoAdmin\Edit.cshtml" />
-	  <None Remove="Views\VideoAdmin\List.cshtml" />
-	  <None Remove="Views\VideoAdmin\Settings.cshtml" />
-	  <None Remove="Views\VideoAdmin\_CreateOrUpdate.cshtml" />
-	  <None Remove="Views\VideoAdmin\_Grid.NewsComments.cshtml" />
-	  <None Remove="Views\VideoAdmin\_Grid.VideoItems.cshtml" />
-	  <None Remove="Views\VideoAdmin\_Grid.VideoItems.Search.cshtml" />
-	  <None Remove="Views\VideoAdmin\_ViewImports.cshtml" />
-	  <None Remove="Views\VideoAdmin\_ViewStart.cshtml" />
-	</ItemGroup>
+    <PropertyGroup>
+        <Product>Smartstore Moving</Product>
+        <OutputPath>..\..\Smartstore.Web\Modules\Smartstore.Moving</OutputPath>
+        <OutDir>$(OutputPath)</OutDir>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="App_Data\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Localization\resources .vi-vn.xml" />
+        <None Remove="Views\VideoAdmin\Comments.cshtml" />
+        <None Remove="Views\VideoAdmin\Create.cshtml" />
+        <None Remove="Views\VideoAdmin\Edit.cshtml" />
+        <None Remove="Views\VideoAdmin\List.cshtml" />
+        <None Remove="Views\VideoAdmin\Settings.cshtml" />
+        <None Remove="Views\VideoAdmin\_CreateOrUpdate.cshtml" />
+        <None Remove="Views\VideoAdmin\_Grid.NewsComments.cshtml" />
+        <None Remove="Views\VideoAdmin\_Grid.VideoItems.cshtml" />
+        <None Remove="Views\VideoAdmin\_Grid.VideoItems.Search.cshtml" />
+        <None Remove="Views\VideoAdmin\_ViewImports.cshtml" />
+        <None Remove="Views\VideoAdmin\_ViewStart.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="wwwroot\jwplayer\" />
+    </ItemGroup>
 </Project>

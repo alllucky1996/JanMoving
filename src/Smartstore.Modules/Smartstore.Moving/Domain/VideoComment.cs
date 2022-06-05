@@ -23,16 +23,7 @@ namespace Smartstore.Moving.Domain
     [Table("NewsComment")] // Enables EF TPT inheritance
     public partial class VideoComment : CustomerContent
     {
-        public VideoComment()
-        {
-        }
-
-        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private member.", Justification = "Required for EF lazy loading")]
-        private VideoComment(ILazyLoader lazyLoader)
-            : base(lazyLoader)
-        {
-        }
-
+        
         /// <summary>
         /// Gets or sets the comment title.
         /// </summary>

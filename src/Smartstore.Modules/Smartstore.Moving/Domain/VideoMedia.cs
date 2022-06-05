@@ -32,15 +32,7 @@ namespace Smartstore.Moving.Domain
     public partial class VideoMedia : BaseEntity, IStoreRestricted, ISoftDeletable, IAuditable
     {
 
-        public VideoMedia()
-        {
-        }
-
-        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private member.", Justification = "Required for EF lazy loading")]
-        private VideoMedia(ILazyLoader lazyLoader)
-            : base(lazyLoader)
-        {
-        }
+        
         public string WebTarget { get; set; }
         [StringLength(20)]
         public string MediaType { get; set; }
